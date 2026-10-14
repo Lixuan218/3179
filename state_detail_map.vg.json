@@ -1,0 +1,119 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 570,
+  "height": 420,
+
+  "params": [
+    {
+      "name": "selectedState",
+      "value": "VIC"
+    }
+  ],
+
+  "projection": {
+    "type": "mercator"
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "Data/australia_states_fixed.json",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+
+      "transform": [
+        {
+          "calculate": "datum.properties.STE_NAME21 == 'New South Wales' ? 'NSW' : datum.properties.STE_NAME21 == 'Victoria' ? 'VIC' : datum.properties.STE_NAME21 == 'Queensland' ? 'QLD' : datum.properties.STE_NAME21 == 'South Australia' ? 'SA' : datum.properties.STE_NAME21 == 'Western Australia' ? 'WA' : datum.properties.STE_NAME21 == 'Tasmania' ? 'TAS' : datum.properties.STE_NAME21 == 'Northern Territory' ? 'NT' : datum.properties.STE_NAME21 == 'Australian Capital Territory' ? 'ACT' : null",
+          "as": "State"
+        },
+
+        {
+          "filter": "datum.State == selectedState"
+        }
+      ],
+
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d7b36a",
+        "stroke": "#ffffff",
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.STE_NAME21",
+            "type": "nominal",
+            "title": "State"
+          }
+        ]
+      }
+    },
+
+
+      {
+    "data": {
+      "url": "Data/galleries_location_clean.csv"
+    },
+
+    "transform": [
+      {
+        "filter": "datum.state == selectedState"
+      },
+
+      {
+        "filter": "selectedState != 'SA' || (datum.longitude >= 129 && datum.longitude <= 141 && datum.latitude >= -39 && datum.latitude <= -25)"
+      }
+    ],
+
+      "mark": {
+        "type": "circle",
+        "size": 80,
+        "color": "#a45d3f",
+        "opacity": 0.9
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+
+        "tooltip": [
+          {
+            "field": "gallery",
+            "type": "nominal",
+            "title": "Gallery"
+          },
+          {
+            "field": "city",
+            "type": "nominal",
+            "title": "City"
+          },
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    }
+  }
+}

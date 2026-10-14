@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 620,
+  "height": 490,
+
+  "projection": {
+  "type": "mercator",
+  "center": [134, -28],
+  "scale": 720
+  },
+
+  "data": {
+    "url": "Data/australia_states_fixed.json",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+
+  "transform": [
+    {
+      "filter": "datum.properties.STE_NAME21 != 'Other Territories' && datum.properties.STE_NAME21 != 'Outside Australia'"
+    },
+
+    {
+      "calculate":
+        "datum.properties.STE_NAME21 == 'New South Wales' ? 'NSW' : datum.properties.STE_NAME21 == 'Victoria' ? 'VIC' : datum.properties.STE_NAME21 == 'Queensland' ? 'QLD' : datum.properties.STE_NAME21 == 'South Australia' ? 'SA' : datum.properties.STE_NAME21 == 'Western Australia' ? 'WA' : datum.properties.STE_NAME21 == 'Tasmania' ? 'TAS' : datum.properties.STE_NAME21 == 'Northern Territory' ? 'NT' : datum.properties.STE_NAME21 == 'Australian Capital Territory' ? 'ACT' : null",
+      "as": "State"
+    },
+
+    {
+      "lookup": "State",
+
+      "from": {
+        "data": {
+          "url": "Data/gallery_counts.csv"
+        },
+
+        "key": "State",
+
+        "fields": [
+          "Estimated galleries"
+        ]
+      }
+    }
+  ],
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#f4efe6",
+    "strokeWidth": 1.5
+  },
+
+  "encoding": {
+
+    "color": {
+      "field": "Estimated galleries",
+      "type": "quantitative",
+      "title": "Estimated galleries",
+
+      "scale": {
+        "scheme": "yellowgreen"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME21",
+        "type": "nominal",
+        "title": "State"
+      },
+
+      {
+        "field": "Estimated galleries",
+        "type": "quantitative",
+        "title": "Estimated galleries"
+      }
+    ]
+  },
+
+  "config": {
+
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "legend": {
+      "orient": "bottom"
+    }
+  }
+}
