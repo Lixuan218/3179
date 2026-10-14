@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>From Gallery to Gallery: Australia’s Visual Heritage</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+
+<body>
+
+
+<!-- ==============================
+     TITLE
+============================== -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Australian Public Art Collections
+        </div>
+
+        <h1>
+            From Gallery to Gallery:
+        </h1>
+
+        <h2>
+            Australia’s Visual Heritage
+        </h2>
+
+        <p class="hero-description">
+            Exploring Australia's visual heritage through its
+            public galleries, collections, artistic periods and
+            cultural stories.
+        </p>
+
+    </div>
+</header>
+
+
+
+<!-- ==============================
+     MAIN CONTENT
+============================== -->
+
+<main class="container">
+
+    <!-- INTRODUCTION -->
+
+<section class="intro-section">
+
+    <div class="intro-kicker">
+        Introduction
+    </div>
+
+    <h2>
+        Australia’s public galleries preserve more than artworks.
+    </h2>
+
+    <div class="intro-line"></div>
+
+    <div class="intro-grid">
+
+        <div class="intro-main">
+            <p>
+                Public galleries play an important role in preserving and presenting
+                Australia’s visual heritage. Their collections bring together artworks
+                from different places, periods and cultural traditions, creating a record
+                of how Australian art and identity have developed over time.
+            </p>
+
+            <p>
+                This visualisation explores Australia’s public gallery landscape from
+                several perspectives: where galleries are located, what kinds of
+                institutions make up the sector, how collections are structured, and
+                how artworks reflect different periods and cultural stories.
+            </p>
+        </div>
+
+
+        <div class="intro-question">
+
+            <div class="intro-question-label">
+                Guiding question
+            </div>
+
+            <p>
+                What can Australia’s public galleries and their collections reveal about
+                the country’s visual heritage?
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- SECTION 1 -->
+
+<section class="section" id="section1">
+
+    <div class="section-number">
+        Section 01 · Geography
+    </div>
+
+    <h2>
+        Where does Australia preserve its art?
+    </h2>
+
+    <div class="section-line"></div>
+
+    <p class="section-intro">
+        Australia’s public galleries form a nationwide cultural network,
+        stretching across every state and territory. But the scale of this
+        network differs considerably across the country.
+    </p>
+
+
+    <!-- CHART 1 -->
+
+    <div class="visual-card">
+
+        <div class="visual-label">
+            Gallery distribution
+        </div>
+
+        <h3>
+            Public galleries across Australia
+        </h3>
+
+        <p class="visual-description">
+            The map compares the estimated number of public galleries
+            in each Australian state and territory. Darker shading
+            represents a larger gallery network.
+        </p>
+
+        <div class="choropleth-layout">
+
+    <div id="choropleth_map" class="chart"></div>
+
+    <div id="state-info" class="state-info">
+
+        <div class="state-info-label">
+            SELECT A STATE
+        </div>
+
+        <div id="selected-state-name" class="state-info-name">
+            Explore Australia
+        </div>
+
+        <div id="selected-gallery-count" class="state-info-number">
+            —
+        </div>
+
+        <div class="state-info-text">
+            Estimated public galleries
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+
+   <div class="insight-grid">
+
+    <div class="insight-card insight-card-light">
+        <div class="insight-label">Gallery network</div>
+        <p>
+            Australia's public gallery network extends across all eight states and territories, but its geographical distribution is uneven. According to the Australian Public Galleries Snapshot 2019, Queensland recorded the highest estimated number of small-to-medium public galleries (104), followed by New South Wales (96) and Victoria (78). In contrast, Tasmania (11) and the Northern Territory (8) recorded substantially fewer galleries. These differences highlight the varied scale of public gallery networks across Australia. However, gallery counts alone do not indicate the size of collections or how accessible galleries are to local communities.
+        </p>
+    </div>
+
+    <div class="insight-card insight-card-dark">
+        <div class="insight-label">Location pattern</div>
+        <p>
+            Looking below state-level totals reveals how galleries are geographically distributed across Australia. The mapped locations show visible concentrations around metropolitan areas, particularly Melbourne, while smaller clusters and individual galleries extend into regional and remote communities. This pattern illustrates how Australia's gallery landscape connects major cultural centres with institutions operating beyond capital cities.
+        </p>
+    </div>
+
+</div>
+
+    <!-- CHART 2 -->
+
+    <div class="visual-card">
+
+        <div class="visual-label">
+            Gallery locations
+        </div>
+
+        <h3>
+            A network of galleries from cities to regional Australia
+        </h3>
+
+        <p class="visual-description">
+            Looking beyond state totals reveals the physical spread of
+            galleries themselves. Each point represents a public gallery,
+            showing how cultural institutions extend from metropolitan
+            centres into regional communities.
+        </p>
+
+        <div class="map-grid">
+
+        <div class="map-panel">
+
+            <h3>Australia gallery network</h3>
+
+            <p class="visual-description">
+                Click a state to highlight it and update the detail map.
+            </p>
+
+            <div id="gallery_location_map" class="chart"></div>
+
+        </div>
+
+
+        <div class="map-panel">
+
+            <p class="visual-description">
+                Explore the selected state. <br>
+                The selected state is shown in more detail with its gallery locations.
+            </p>
+
+            <div id="state_detail_map" class="chart"></div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 02 — GALLERY SECTOR
+========================================================= -->
+
+<section class="section section-dark">
+
+    <div class="section-number">
+        Section 02 · Gallery Sector
+    </div>
+
+    <h2>
+        How is Australia’s public gallery sector structured?
+    </h2>
+
+    <div class="section-line"></div>
+
+    <p class="section-intro">
+        Australia’s public gallery sector includes hundreds of institutions
+        operating at different scales and serving different cultural roles.
+        Looking at the size and types of galleries helps reveal the structure
+        of the sector that supports Australia’s visual heritage.
+    </p>
+
+
+    <!-- =====================================================
+         SIDE-BY-SIDE CHARTS
+    ====================================================== -->
+
+    <div class="section2-grid">
+
+
+        <!-- =================================================
+             SECTOR SCALE
+        ================================================== -->
+
+        <div class="visual-card">
+
+            <div class="visual-label">
+                Sector scale
+            </div>
+
+            <h3>
+                How large is Australia's public gallery sector?
+            </h3>
+
+            <p class="visual-description">
+                The estimated small-to-medium public gallery sector includes
+                434 galleries, while 170 galleries participated in the survey.
+            </p>
+
+            <div id="sector_scale_chart" class="chart"></div>
+
+
+            <!-- COLLECTION HEADLINE FIGURES -->
+
+            <div class="collection-callouts">
+
+                <div class="collection-callout">
+
+                    <div class="callout-number">
+                        819,269
+                    </div>
+
+                    <div class="callout-label">
+                        Collection items reported
+                    </div>
+
+                </div>
+
+
+                <div class="collection-callout">
+
+                    <div class="callout-number">
+                        $1.5B
+                    </div>
+
+                    <div class="callout-label">
+                        Estimated collection value
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             GALLERY TYPES
+        ================================================== -->
+
+        <div class="visual-card">
+
+            <div class="visual-label">
+                Gallery types
+            </div>
+
+            <h3>
+                What types of public galleries make up the sector?
+            </h3>
+
+            <p class="visual-description">
+                Public and regional galleries dominate the sector, while
+                contemporary art spaces, art museums, craft galleries and
+                Aboriginal art centres make up smaller shares.
+            </p>
+
+            <div id="gallery_types_chart" class="chart"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SECTION 02 INTERPRETATION
+    ====================================================== -->
+
+    <div class="collections-story-grid">
+
+        <div class="collections-story-box light">
+
+            <div class="collections-story-label">
+                Gallery network
+            </div>
+
+            <p>
+                Australia’s public gallery sector is broad in scale and diverse
+                in structure. Public and regional galleries form the dominant
+                institutional type, showing that Australia’s visual heritage is
+                supported not only by major museums but also by an extensive
+                network of local and regional institutions.
+            </p>
+
+        </div>
+
+
+        <div class="collections-story-box dark">
+
+            <div class="collections-story-label">
+                Sector structure
+            </div>
+
+            <p>
+                The sector includes several different types of cultural
+                institutions, from public and regional galleries to contemporary
+                art spaces, art museums, craft centres and Aboriginal art centres.
+                Together, these institutions provide different ways for artworks
+                and cultural material to be collected, exhibited and shared.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 03 — COLLECTING IDENTITIES
+========================================================= -->
+
+<section class="section section-identities" id="section3">
+
+    <div class="section-number">
+        Section 03 · Collecting identities
+    </div>
+
+    <h2>
+        What do Australian galleries choose to preserve?
+    </h2>
+
+    <div class="section-line"></div>
+
+    <p class="section-intro">
+        Australia’s major public galleries share responsibility for preserving
+        visual heritage, but they do not collect in exactly the same way.
+        Comparing collection themes across institutions reveals distinct
+        curatorial priorities and collecting identities.
+    </p>
+
+
+    <!-- =====================================================
+         3.1 CROSS-GALLERY COLLECTION THEMES
+    ====================================================== -->
+
+    <div class="visual-card gallery-theme-card">
+
+        <div class="visual-label">
+            Collection themes
+        </div>
+
+        <h3>
+            How do collecting priorities differ between major galleries?
+        </h3>
+
+        <p class="visual-description">
+            Australia’s major galleries overlap in many collecting areas, but
+            each institution places different emphasis on particular artistic
+            traditions, regions and forms. The matrix compares broad collection
+            themes represented across six major Australian galleries.
+        </p>
+
+
+        <div id="gallery_theme_heatmap" class="chart"></div>
+
+        <div class="theme-legend">
+
+            <div class="theme-legend-item">
+                <span class="theme-legend-box theme-legend-present"></span>
+                Explicitly identified collection theme
+            </div>
+
+            <div class="theme-legend-item">
+                <span class="theme-legend-box theme-legend-neutral"></span>
+                Not separately identified in the source used
+            </div>
+
+        </div>
+
+
+        <div class="theme-story">
+
+            <div class="theme-story-label">
+                Reading the comparison
+            </div>
+
+            <h4>
+                Shared responsibilities do not produce identical collections.
+            </h4>
+
+            <p>
+                Australian art and First Nations art appear across several major
+                institutions, reflecting their importance within Australia’s
+                visual heritage. Other areas, such as Asian, Pacific,
+                photography and design collections, vary more noticeably
+                between galleries.
+            </p>
+
+            <p>
+                These differences suggest that each gallery contributes a
+                distinct collecting identity while remaining part of a broader
+                national cultural network.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         3.2 QAGOMA COLLECTION COMPOSITION
+    ====================================================== -->
+
+    <div class="visual-card qagoma-theme-card">
+
+        <div class="visual-label">
+            Collection composition
+        </div>
+
+        <h3>
+            What does one collecting identity look like in detail?
+        </h3>
+       
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         3.3 DEPARTMENT × ARTWORK CATEGORY
+    ====================================================== -->
+
+    <div class="visual-card department-category-card">
+
+        <div class="visual-label">
+            Internal collection structure
+        </div>
+
+        <h3>
+            How are different artwork types distributed across collecting areas?
+        </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SECTION 03 TAKEAWAY
+    ====================================================== -->
+
+    <div class="identity-takeaway">
+
+        <div class="identity-takeaway-label">
+            The bigger picture
+        </div>
+
+        <h4>
+            Australian galleries preserve a shared visual heritage through
+            different collecting priorities.
+        </h4>
+
+        <p>
+            Major galleries overlap in important areas such as Australian and
+            First Nations art, but differences in regional, cultural and
+            medium-based collecting create distinct institutional identities.
+            Looking within a single collection shows that these identities are
+            further shaped by the balance between dominant artwork forms and
+            smaller specialised categories.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 04 — COLLECTIONS
+========================================================= -->
+
+<section class="section section-collections">
+
+    <div class="section-number">
+        Section 04 · Inside the collection
+    </div>
+
+    <h2>
+        What is preserved inside these collections?
+    </h2>
+
+    <div class="section-line"></div>
+
+    <p class="section-intro">
+        After comparing the collecting identities of major Australian galleries,
+        this section looks more closely at how collections are preserved,
+        accessed and represented through a case study of the QAGOMA Collection.
+    </p>
+
+
+    <!-- =====================================================
+         4.1 PERMANENT COLLECTIONS
+    ====================================================== -->
+
+    <div class="visual-card collection-permanent-card">
+
+        <div class="visual-label">
+            Permanent collections
+        </div>
+
+        <h3>
+            How many galleries hold a permanent collection?
+        </h3>
+
+        <p class="visual-description">
+            Nearly three-quarters of surveyed galleries hold a permanent
+            collection. Each square represents one percentage point.
+        </p>
+
+
+        <div class="waffle-layout">
+
+            <div id="collection_waffle" class="chart"></div>
+
+
+            <div class="waffle-note">
+
+                <div class="waffle-note-label">
+                    What this shows
+                </div>
+
+                <h4>
+                    Permanent collections remain central to the public gallery sector.
+                </h4>
+
+                <p>
+                    Around 72% of surveyed galleries report holding a permanent
+                    collection, while 28% do not. This suggests that most public
+                    galleries play a long-term custodial role in preserving artworks
+                    and cultural material rather than functioning only as temporary
+                    exhibition spaces.
+                </p>
+
+                <div class="waffle-highlight">
+                    <span>72%</span>
+                    hold a permanent collection
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+        4.2 COLLECTION ACCESS
+    ====================================================== -->
+
+    <div class="visual-card collection-access-card">
+
+        <div class="visual-label">
+            Collection access
+        </div>
+
+        <h3>
+            How accessible are these collections?
+        </h3>
+
+        <p class="visual-description">
+            Preserving artworks is only one part of collection management.
+            Digitisation helps galleries document their holdings, while online
+            access allows audiences to explore collections beyond the physical gallery.
+        </p>
+
+
+        <!-- 50 / 50 AREA -->
+        <div class="collection-access-layout">
+
+
+            <!-- LEFT 50% -->
+            <div class="collection-access-chart-area">
+
+                <div id="collection_access_chart"></div>
+
+            </div>
+
+
+            <!-- RIGHT 50% -->
+            <div class="collection-access-note">
+
+                <div class="collection-access-note-label">
+                    From preservation to access
+                </div>
+
+                <h4>
+                    Digitisation does not always mean public accessibility.
+                </h4>
+
+                <p>
+                    While 74% of collection material is digitised, only 35% is
+                    available online. This reveals a substantial gap between
+                    documenting collections internally and making them accessible
+                    to wider audiences.
+                </p>
+
+                <div class="access-highlight">
+                    <span>39</span>
+                    percentage-point gap between digitisation and online access
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         4.3 TOP ARTWORK TYPES
+    ====================================================== -->
+
+    <div class="visual-card artwork-types-card">
+
+        <div class="visual-label">
+            Inside the collection
+        </div>
+
+        <h3>
+            What kinds of artworks are collected?
+        </h3>
+
+        <p class="visual-subtitle">
+            A case study of the QAGOMA Collection
+        </p>
+
+        <p class="visual-description">
+            Looking inside an individual public gallery collection provides a
+            closer view of the different forms of visual art that galleries
+            preserve. The chart highlights the ten most common physical
+            categories represented in the QAGOMA Collection.
+        </p>
+
+
+        <div class="artwork-types-layout">
+
+            <!-- TOP 10 CHART -->
+
+            <div class="artwork-chart-area">
+
+                <div id="artwork_types_chart" class="chart"></div>
+
+                <p class="case-study-note">
+                    The QAGOMA Collection is used as a case study because
+                    consistent, nationally comparable artwork-type data is not
+                    available across Australian public galleries.
+                </p>
+
+            </div>
+
+
+            <!-- EXPLANATION -->
+
+            <div class="artwork-types-note">
+
+                <div class="artwork-types-note-label">
+                    Collection case study
+                </div>
+
+                <h4>
+                    Visual heritage takes many forms.
+                </h4>
+
+                <p>
+                    Prints and paintings form the largest physical categories in
+                    the QAGOMA Collection, followed by photography, drawing,
+                    ceramics and sculpture.
+                </p>
+
+                <p>
+                    These dominant categories reveal the main forms represented
+                    in the collection, but they do not show the full breadth of
+                    smaller artwork types.
+                </p>
+
+                <div class="artwork-case-highlight">
+                    <span>Top 10</span>
+                    most common artwork categories
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         4.4 FULL COLLECTION DIVERSITY — PARETO CHART
+    ====================================================== -->
+
+    <div class="visual-card collection-diversity-card">
+
+        <div class="visual-label">
+            Collection diversity
+        </div>
+
+        <h3>
+            Beyond the major categories
+        </h3>
+
+        <p class="visual-subtitle">
+            How diverse is the QAGOMA Collection?
+        </p>
+
+        <p class="visual-description">
+            While several major artwork types account for a large share of the
+            collection, many smaller categories create a long tail of artistic
+            forms and materials. The bars show the number of artworks in each
+            category, while the cumulative line shows how quickly these
+            categories build towards the full classified collection.
+        </p>
+
+
+        <div class="pareto-layout">
+
+            <!-- PARETO CHART -->
+
+            <div class="pareto-chart-area">
+
+                <div id="collection_diversity_chart" class="chart"></div>
+
+                <p class="case-study-note">
+                    The chart includes all classified QAGOMA
+                    <em>PhysicalCategory</em> values. Records without a reported
+                    physical category are excluded.
+                </p>
+
+            </div>
+
+
+            <!-- RIGHT-HAND STORY -->
+
+            <div class="pareto-note">
+
+                <div class="pareto-note-label">
+                    Reading the chart
+                </div>
+
+                <h4>
+                    A few categories dominate, but the collection extends much further.
+                </h4>
+
+                <p>
+                    The largest categories account for a substantial share of the
+                    collection, but smaller categories such as jewellery,
+                    installation, metalwork, furniture, film and leatherwork
+                    demonstrate a much wider range of artistic forms.
+                </p>
+
+                <p>
+                    The cumulative line makes this concentration visible.
+                    As categories are added from largest to smallest, the line
+                    approaches 100%, showing how both major and minor categories
+                    contribute to the overall collection.
+                </p>
+
+                <div class="pareto-highlight">
+                    <span>23</span>
+                    classified artwork categories
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SECTION 04 TAKEAWAY
+    ====================================================== -->
+
+    <div class="collection-section-takeaway">
+
+        <div class="collection-takeaway-label">
+            The bigger picture
+        </div>
+
+        <p>
+            Australia’s public galleries do more than display artworks.
+            Through permanent collections, digitisation and the preservation
+            of many different artistic forms, galleries act as long-term
+            custodians of visual culture and help carry Australia’s artistic
+            heritage into the future.
+        </p>
+
+    </div>
+
+</section>
+
+     <!-- SECTION 5 -->
+
+    <section class="section section-dark">
+
+        <div class="section-number">
+            Section 05
+        </div>
+
+        <h2>
+            Whose stories shape the collection?
+        </h2>
+
+        <div class="section-line"></div>
+
+        <div class="placeholder">
+            Visualisation will go here
+        </div>
+
+    </section>
+
+     <!-- SECTION 6 -->
+
+    <section class="section section-dark">
+
+        <div class="section-number">
+            Section 06
+        </div>
+
+        <h2>
+            Whose stories shape the collection?
+        </h2>
+
+        <div class="section-line"></div>
+
+        <div class="placeholder">
+            Visualisation will go here
+        </div>
+
+    </section>
+
+     <!-- SECTION 7 -->
+
+    <section class="section section-dark">
+
+        <div class="section-number">
+            Section 07
+        </div>
+
+        <h2>
+            Whose stories shape the collection?
+        </h2>
+
+        <div class="section-line"></div>
+
+        <div class="placeholder">
+            Visualisation will go here
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ==============================
+     FOOTER
+============================== -->
+
+<footer>
+
+    <h2>
+        From Gallery to Gallery
+    </h2>
+
+    <p>
+        Australia’s Visual Heritage
+    </p>
+
+</footer>
+
+<script>
+
+    vegaEmbed(
+    "#choropleth_map",
+    "js/choropleth_map.vg.json",
+    {
+        actions: false
+    }
+    ).then(function(result) {
+
+        const choroplethView = result.view;
+
+        choroplethView.addEventListener(
+            "click",
+            function(event, item) {
+
+                if (!item || !item.datum) {
+                    return;
+                }
+
+                const stateName =
+                    item.datum.properties?.STE_NAME21;
+
+                const galleryCount =
+                    item.datum["Estimated galleries"];
+
+                if (!stateName || galleryCount == null) {
+                    return;
+                }
+
+                document.getElementById(
+                    "selected-state-name"
+                ).textContent = stateName;
+
+                document.getElementById(
+                    "selected-gallery-count"
+                ).textContent = galleryCount;
+
+                document.getElementById(
+                    "state-info"
+                ).classList.add("active");
+
+            }
+        );
+
+    });
+
+
+        /* ---------------------------------
+        DETAIL MAP
+        --------------------------------- */
+
+        vegaEmbed(
+            "#state_detail_map",
+            "js/state_detail_map.vg.json",
+            {
+                actions: false
+            }
+        ).then(function(result) {
+
+            detailView = result.view;
+
+        });
+
+
+    /* ---------------------------------
+       AUSTRALIA OVERVIEW MAP
+    --------------------------------- */
+
+    vegaEmbed(
+        "#gallery_location_map",
+        "js/gallery_location_map.vg.json",
+        {
+            actions: false
+        }
+    ).then(function(result) {
+
+        const overviewView = result.view;
+
+
+        overviewView.addEventListener(
+            "click",
+            function(event, item) {
+
+                if (!item || !item.datum) {
+                    return;
+                }
+
+
+                const state = item.datum.State;
+
+
+                if (!state) {
+                    return;
+                }
+
+
+                if (!detailView) {
+                    return;
+                }
+
+
+                detailView
+                    .signal("selectedState", state)
+                    .runAsync();
+
+            }
+        );
+    });
+
+     /* ---------------------------------
+       SECTION 2 — SECTOR SCALE
+    --------------------------------- */
+
+    vegaEmbed(
+        "#sector_scale_chart",
+        "js/sector_scale_chart.vg.json",
+        {
+            actions: false
+        }
+    );
+
+    vegaEmbed(
+        "#collection_waffle",
+        "js/collection_waffle.vg.json",
+        {
+            actions: false
+        }
+    );
+
+    vegaEmbed(
+        "#gallery_types_chart",
+        "js/gallery_types_chart.vg.json",
+        {
+            actions: false
+        }
+    );
+
+    /* ---------------------------------
+    SECTION 3 — GALLERY THEME HEATMAP
+    --------------------------------- */
+
+    vegaEmbed(
+        "#gallery_theme_heatmap",
+        "js/gallery_theme_heatmap.vg.json",
+        {
+            actions: false
+        }
+    );
+
+    /* ---------------------------------
+    SECTION 4 — ARTWORK TYPES
+    --------------------------------- */
+
+    vegaEmbed(
+        "#artwork_types_chart",
+        "js/artwork_types_chart.vg.json",
+        {
+            actions: false
+        }
+    );
+
+    /* ---------------------------------
+    SECTION 4 — COLLECTION DIVERSITY
+    --------------------------------- */
+
+    vegaEmbed(
+        "#collection_diversity_chart",
+        "js/collection_diversity_chart.vg.json",
+        {
+            actions: false
+        }
+    );
+
+    vegaEmbed(
+        "#collection_access_chart",
+        "js/collection_access_dumbbell.vg.json",
+        {
+            actions: false
+        }
+    );
+
+</script>
+
+</body>
+
+</html>
